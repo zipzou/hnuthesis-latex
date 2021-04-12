@@ -1,0 +1,133 @@
+\documentclass[a4paper]{hnuthesis}
+% 表格
+\usepackage{longtable, multirow}
+% 英文使用 Times 字体
+\usepackage{times}
+% 源代码
+\usepackage{fancyvrb}
+% 自定义列表样式
+\usepackage{enumitem}
+\usepackage{url}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{moreverb}
+\usepackage{txfonts}
+\usepackage{mathcomp}
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage[linesnumbered,boxed,ruled,vlined]{algorithm2e}
+\usepackage{array}
+\usepackage{multirow}
+
+%%	added by Jiang
+\usepackage{extarrows}	%使用长箭头
+\usepackage{nomencl}	%与术语表有关的包
+\usepackage{booktabs}
+% \usepackage{ccmap}
+\usepackage[numbers]{natbib}
+\usepackage{color}
+\usepackage{caption}
+\usepackage{algorithmicx}
+% \usepackage[chapter]{algorithm}
+\usepackage[linesnumbered]{algorithm2e}
+\usepackage{algpseudocode}
+\usepackage{setspace}
+\usepackage{pifont}
+\usepackage{listings}
+\defaultfontfeatures{Mapping=tex-text}
+\setmainfont{Times New Roman}
+\newfontfamily\fira{Fira Code}
+\lstset{
+    basicstyle          =   \footnotesize\fira,          % 基本代码风格
+    keywordstyle        =   \bfseries\itshape,          % 关键字风格
+    commentstyle        =   \color{commentgreen}\fira\itshape,  % 注释的风格，斜体
+    stringstyle         =   \fira,  % 字符串风格
+    flexiblecolumns,                % 别问为什么，加上这个
+    numbers             =   left,   % 行号的位置在左边
+    showspaces          =   false,  % 是否显示空格，显示了有点乱，所以不现实了
+    numberstyle         =   \footnotesize\fira,    % 行号的样式，小五号，tt等宽字体
+    showstringspaces    =   false,
+    captionpos          =   t,      % 这段代码的名字所呈现的位置，t指的是top上面
+    frame               =   b,   % 显示边框
+    framerule       =   1pt
+}
+
+\lstdefinestyle{Python}{
+    language        =   Python, % 语言选Python
+    basicstyle      =   \footnotesize\fira,
+    numberstyle     =   \footnotesize\fira,
+    keywordstyle    =   \bfseries\color{blue},
+    keywordstyle    =   [2] \bfseries\color{teal},
+    stringstyle     =   \color{magenta},
+    commentstyle    =   \color{commentgreen}\fira,
+    breaklines      =   true,   % 自动换行，建议不要写太长的行
+    columns         =   fixed,  % 如果不加这一句，字间距就不固定，很丑，必须加
+    basewidth       =   0.5em,
+    framerule       =   1pt
+}
+
+\title{论文标题}
+\author{作者姓名}
+\studentnum{作者学号}
+\grade{班级}
+\advisor{\kaishu XXX~~教授}
+
+\major{\kaishu }
+\researchfield{\kaishu }
+\footdate{\kaishu 2021~年~5~月}
+\submitdate{\kaishu 2021~年~5~月~23~日}
+\defenddate{\kaishu 2021~年~5~月~23~日}
+\institute{学院名称}
+\instituteleader{XXX~~教授}
+
+\begin{document}
+
+\maketitle
+
+\frontmatter
+
+\pagestyle{plain}
+
+\makepaperdeclare
+
+\begin{abstract}
+  这是中文摘要
+
+  \keywords{中文、关键词1}
+\end{abstract}
+
+\begin{engabstract}
+
+  This is Abstract with English
+  
+  \enkeywords{Keyword1, Keyword2}
+\end{engabstract}
+
+\addtocontents{toc}{\protect\setcounter{tocdepth}{-1}}
+\tableofcontents
+\addtocontents{toc}{\protect\setcounter{tocdepth}{3}}
+
+\mainmatter
+
+\input{sections/how-to-use.tex}
+\input{sections/to-ref.tex}
+\input{sections/chapter1.tex}
+\input{sections/chapter2.tex}
+\input{sections/chapter3.tex}
+\input{sections/chapter4.tex}
+\input{sections/chapter5.tex}
+
+
+\begin{conclusion}
+  这是结论，主要描写本文取得的成果
+\end{conclusion}
+
+\bibliography{ref}
+\addcontentsline{toc}{chapter}{参考文献}
+\bibliographystyle{NJUthesis}
+
+\begin{acknowledge}
+  这里是致谢，一般是学校、导师、家人、同学
+\end{acknowledge}
+
+\end{document}

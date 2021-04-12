@@ -1,0 +1,103 @@
+\chapter{如何使用}
+
+本模板仅支持使用xelatex编译，用于适配Linux、macOS、Windows等多平台，为添加中文支持，本模板使用\lstinline{xeCJK}包构建中文。使用时，可根据示例文件\lstinline{hnu-paper.tex}修改内容即可。
+
+本模板支持配置盲审模式，若需产生盲审送审版，可在文件\lstinline{hnu-paper.tex}头部\lstinline{\documentclass[review]}中添加选项为\lstinline{review}，即可产生盲审版，去除所有作者、导师、学院等信息。正常模式下，去除参数\lstinline{review}即可完整显示。
+
+\section{论文元信息设定}
+
+论文元信息主要包括：\begin{enumerate}[itemsep=0pt, itemindent=12pt]
+  \item 论文标题，指令：\lstinline{\title}
+  \item 作者姓名，指令：\lstinline{\author}
+  \item 作者学号，指令：\lstinline{\studentnum}
+  \item 作者班级，指令：\lstinline{\grade}
+  \item 学院名称，指令：\lstinline{\institute}
+  \item 指导老师，指令：\lstinline{\advisor}
+  \item 学院院长，指令：\lstinline{\instituteleader}
+  \item 论文提交日期，指令：\lstinline{\submitdate}
+\end{enumerate}
+这些元信息，可通过在论文正文开始前逐个配置，并在\lstinline{\maketitle}后自动配置到论文封面。
+\section{图片使用}
+\figref{fig:logo}展示了图片引用方式，在引用图片时，可以采用命令\lstinline{\figref}，并提供label作为参数，自动生成需要引用的图片编号。同理，\figref{fig:multi}为多张图片并列时的效果，并且子图将使用英文字母进行编号，并且通过子图的label标签，可以引用到子图，如\figref{fig:1}所示的内容。
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{hnu-logo}
+  \caption{大学logo}
+  \label{fig:logo}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \begin{minipage}[b]{0.48\textwidth}
+    \centering
+    \subfigure[并列图片1]{
+      \includegraphics[width=0.5\columnwidth]{figs/hnu-logo.pdf}
+      \label{fig:1}
+    }
+  \end{minipage}
+  \begin{minipage}[b]{0.48\textwidth}
+    \centering
+    \subfigure[并列图片1]{
+      \includegraphics[width=0.5\columnwidth]{hnu-title}
+      \label{fig:2}
+    }
+  \end{minipage}
+  \caption{并列图片示例}
+  \label{fig:multi}
+\end{figure}
+
+\section{表格使用}
+
+\begin{table}[htp]
+  \centering
+  \caption{表示例}
+  \label{tab:table1}
+  \begin{tabular}{ccc}
+    \toprule
+    \textbf{列1} & \textbf{列2} & \textbf{列3} \\
+    \midrule
+    1 & 2 & 3 \\
+    4 & 5 & 6 \\
+    9 & 8 & 7 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{使用列表}
+
+列表通常包含两种形式，有序列表和无序列表
+\begin{enumerate}[itemindent=42pt, itemsep=0pt, label=(\arabic{*}), labelsep=30pt]
+  \item 这是有序列表的形式
+  \item 使用参数\lstinline{itemindent}可以更改缩进
+  \item 使用参数\lstinline{iemsep}可以更改列表项之间的垂直间距
+  \item 使用参数\lstinline{label}可以更改列表的编号风格
+  \item 使用参数\lstinline{labelsep}可以更改编号标签与文本的间距
+  \item\label{item:enum} 列表项同样可以使用\lstinline{\label}加标签引用，如\ref{item:enum}
+\end{enumerate}
+
+
+\section{公式使用}
+
+  \subsection{行内公式}
+
+  行内公式包裹在\lstinline{$$}内即可，如$c=a+b$。行内公式与文本同行，无法进行编号，并且当公式长度过长，可能出现无法正确换行的情况。当公式过长时应尽量使用块公式。
+  同时，行内公式在使用求和上下标时，将与块公式不同：$\sum_{i=1}^n i$，当使用\lstinline{\limits}则可产生块公式相同效果：$\sum\limits_{i=1}^n i$。
+
+  \subsection{块公式}
+
+  求和公式：
+  $$
+  sum = \sum_{i=1}^n i
+  $$
+  该公式无法编号，也无法引用，当需要引用编号时，应该用环境形式编写，如公式~\eqref{eq:p}：
+  \begin{equation}
+    p = \left\{
+      \begin{array}{cl} % c表示该列居中对齐，l表示左对齐
+        50\%, & f < \bar{t}\\
+        \frac{f-\bar{t}}{\bar{\tau} - \bar{t}} \times 50\% + 50\%, & \bar{t} \leq f < \bar{\tau} \\
+        100\%, & \text{otherwise}
+      \end{array}
+    \right.
+    \label{eq:p}
+  \end{equation}
+
