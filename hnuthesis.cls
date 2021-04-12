@@ -128,6 +128,7 @@
 \newcommand\englishdegree[1]{\def\HNUT@value@englishdegree{#1}}
 \newcommand\englishmajor[1]{\def\HNUT@value@englishmajor{#1}}
 \newcommand\englishdate[1]{\def\HNUT@value@englishdate{#1}}
+\newcommand\titleen[1]{\def\HNU@value@titleen{#1}}
 \def\authtitle{{学位论文原创性声明和学位论文版权使用授权书}}
 % \newcommand\makeauthtitle{\titlecontents{chapter}{\bfseries\songti}}
 
@@ -293,7 +294,7 @@
 \newenvironment{abstract}{
   \if@twoside\cleardoublepage\else\clearpage\fi
   \pdfbookmark[0]{\HNUT@abs@label@abstract}{abstract}
-  \chapter*{\HNUT@abs@label@abstract}
+  \chapter*{\HNUT@value@title\\\HNUT@abs@label@abstract}
 
   \par
 
@@ -304,7 +305,7 @@
 
   \if@twoside\cleardoublepage\else\clearpage\fi
   \pdfbookmark[0]{\HNUT@abs@label@engabstract}{engabstract}
-  \chapter*{\HNUT@abs@label@engabstract}
+  \chapter*{\HNU@value@titleen\\\HNUT@abs@label@engabstract}
 
   \par
 
